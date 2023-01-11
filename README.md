@@ -16,12 +16,11 @@
 商家需要使用AppKey&AppSecret来作为调用Api接口的主要凭证。
 获取方式：请联系业务人员获取。
 
- 网址：<u>www.flexolinkai.com</u>
+ 网址：<u>www.flexolinkai.com</u>
 
- 联系电话：0571-56121906
+ 联系电话：0571-56121906
 
- 邮箱：<u>market@flexolinktech.com</u>
-
+ 邮箱：<u>market@flexolinktech.com</u>
 
 
 ### #sign签名
