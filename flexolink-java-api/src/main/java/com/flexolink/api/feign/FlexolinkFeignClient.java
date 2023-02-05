@@ -18,7 +18,7 @@ public interface FlexolinkFeignClient {
     /**
      * 获取token授权
      */
-    @PostMapping(value = "/openapi/auth/getToken")
+    @PostMapping(value = "/api/auth/getToken")
     Message<AccessTokenVo> getToken(@RequestBody Map<String, Object> body);
 
     /**
@@ -28,7 +28,7 @@ public interface FlexolinkFeignClient {
      *             deviceNumber:设备编号 N
      *             }
      */
-    @PostMapping(value = "/openapi/shop/device/findByList")
+    @PostMapping(value = "/api/shop/device/findByList")
     Message<Map<String, Object>> getShopList(@RequestHeader("token") String token,
                                              @RequestBody Map<String, Object> body);
 
@@ -58,7 +58,7 @@ public interface FlexolinkFeignClient {
      * 	}
      * }
      */
-    @PostMapping(value = "/openapi/shop/sleep/findByList")
+    @PostMapping(value = "/api/shop/sleep/findByList")
     Message<Map<String, Object>> getSleepReportList(@RequestHeader("token") String token,
                                              @RequestBody Map<String, Object> body);
 
@@ -78,7 +78,7 @@ public interface FlexolinkFeignClient {
      * }
      * }
      */
-    @PostMapping(value = "/openapi/shop/device/get")
+    @PostMapping(value = "/api/shop/device/get")
     Message<Map<String, Object>> getDevice(@RequestHeader("token") String token,
                                            @RequestBody Map<String, Object> body);
 
@@ -101,7 +101,7 @@ public interface FlexolinkFeignClient {
      * }
      * }
      */
-    @PostMapping(value = "/openapi/shop/device/add")
+    @PostMapping(value = "/api/shop/device/add")
     Message<Map<String, Object>> addDevice(@RequestHeader("token") String token, @RequestBody Map<String, Object> body);
 
     /**
@@ -117,7 +117,7 @@ public interface FlexolinkFeignClient {
      * "data": "true"
      * }
      */
-    @PostMapping(value = "/openapi/shop/device/set")
+    @PostMapping(value = "/api/shop/device/set")
     Message<Boolean> setDevice(@RequestHeader("token") String token, @RequestBody Map<String, Object> body);
 
     /**
@@ -131,7 +131,7 @@ public interface FlexolinkFeignClient {
      * "data": "true"
      * }
      */
-    @PostMapping(value = "/openapi/shop/device/del")
+    @PostMapping(value = "/api/shop/device/del")
     Message<Boolean> delDevice(@RequestHeader("token") String token,
                                            @RequestBody Map<String, Object> body);
 
@@ -152,7 +152,7 @@ public interface FlexolinkFeignClient {
      * ]
      * }
      */
-    @PostMapping(value = "/openapi/shop/device/get/member/list")
+    @PostMapping(value = "/api/shop/device/get/member/list")
     Message<Map<String, Object>> getMemberList(@RequestHeader("token") String token,
                                                @RequestBody Map<String, Object> body);
 
@@ -207,7 +207,7 @@ public interface FlexolinkFeignClient {
      *                }    * 	}
      * }
      */
-    @PostMapping(value = "/openapi/shop/sleep/getPlatformSleepReport")
+    @PostMapping(value = "/api/shop/sleep/getPlatformSleepReport")
     Message<Map<String, Object>> getPlatformSleepReport(@RequestHeader("token") String token,
                                                @RequestBody Map<String, Object> body);
     /**
@@ -218,7 +218,7 @@ public interface FlexolinkFeignClient {
      *              }
      * @return
      */
-    @PostMapping(value = "/openapi/shop/sleep/generateSleepReport")
+    @PostMapping(value = "/api/shop/sleep/generateSleepReport")
     Message<Map<String, Object>> generateSleepReport(@RequestHeader("token") String token,
                                                @RequestBody Map<String, Object> body);
 
