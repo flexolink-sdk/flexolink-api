@@ -22,7 +22,7 @@ public interface FlexolinkFeignClient {
     Message<AccessTokenVo> getToken(@RequestBody Map<String, Object> body);
 
     /**
-     * 商家设备列表
+     * 开发者设备列表
      *
      * @param body {deviceName:设备名称 N
      *             deviceNumber:设备编号 N
@@ -33,13 +33,13 @@ public interface FlexolinkFeignClient {
                                              @RequestBody Map<String, Object> body);
 
     /**
-     * 商家睡眠报告列表
+     * 开发者睡眠报告列表
      *
      * @param body {
      *             deviceNumber:设备编号 N
      *             sleepReportId:睡眠报告id N
-     *             sleepReportType:睡眠报告类型 CONSUME_SLEEP_REPORT-小柔享睡
-     * HOSPITAL_SLEEP_REPORT-额贴式睡眠监测软件 N
+     *             sleepReportType:睡眠报告类型 CONSUME_SLEEP_REPORT-消费级睡眠报告
+     * HOSPITAL_SLEEP_REPORT-医疗级睡眠报告 N
      *             }
      * @return{
      * 	"code": "200",
@@ -63,7 +63,7 @@ public interface FlexolinkFeignClient {
                                              @RequestBody Map<String, Object> body);
 
     /**
-     * 查询商家指定设备
+     * 查询开发者指定设备
      *
      * @param token
      * @param body
@@ -157,7 +157,7 @@ public interface FlexolinkFeignClient {
                                                @RequestBody Map<String, Object> body);
 
     /**
-     * 获取商家睡眠报告明细
+     * 获取开发者睡眠报告明细
      *
      * @param token
      * @param body{ "id":"1" Y,

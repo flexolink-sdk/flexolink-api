@@ -2,7 +2,7 @@
 # 柔灵API简介
 
 ### #API概述
-柔灵API 是柔灵产品提供的开放应用程序接口，是除了商家后台外，主要的服务形式之一。开发者可以通过编程的方式来使用柔灵科技的服务，相比于商家后台，使用柔灵API能跟便捷的将开发者的产品与柔灵产品深度结合 。柔灵API为开发者提供了多种编程语言（Java、Python、Node.js/TypeScript、PHP、C++ 等）的SDK示例、这些 SDK都是基于柔灵API的能力而构建。
+柔灵API 是柔灵产品提供的开放应用程序接口，是除了开发者后台外，主要的服务形式之一。开发者可以通过编程的方式来使用柔灵科技的服务，相比于开发者后台，使用柔灵API能跟便捷的将开发者的产品与柔灵产品深度结合 。柔灵API为开发者提供了多种编程语言（Java、Python、Node.js/TypeScript、PHP、C++ 等）的SDK示例、这些 SDK都是基于柔灵API的能力而构建。
 
 柔灵 API 以访问密钥（appKey&appSecret）识别调用者身份，提供自动签名等功能，方便您通过API接入柔灵产品来获取各项数据。使用API功能需要您购买柔灵脑电产品，并申请appKey和appSecret。
 
@@ -13,7 +13,7 @@
 
 # **快速接入**
 ### #获取AppKey&AppSecret
-商家需要使用AppKey&AppSecret来作为调用Api接口的主要凭证。
+开发者需要使用AppKey&AppSecret来作为调用Api接口的主要凭证。
 获取方式：请联系业务人员获取。
 
  网址：<u>www.flexolinkai.com</u>
@@ -34,9 +34,9 @@ https://openapi.flexolinkai.com/
 Java示例
 ```
  AccessTokenParam accessTokenParam = new AccessTokenParam();
-        // 商家端appKey
+        // 开发者appKey
         accessTokenParam.setAppKey(APP_KEY);
-        // 商家端appSecret
+        // 开发者appSecret
         accessTokenParam.setAppSecret(APP_SECRET);
         Map<String, Object> body = SignUtil.toMap(accessTokenParam);
 			  // 签名
