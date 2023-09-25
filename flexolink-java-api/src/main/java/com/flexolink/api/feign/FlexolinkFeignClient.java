@@ -3,7 +3,6 @@ package com.flexolink.api.feign;
 import com.flexolink.api.vo.AccessTokenVo;
 import com.flexolink.api.vo.Message;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -39,28 +38,27 @@ public interface FlexolinkFeignClient {
      *             deviceNumber:设备编号 N
      *             sleepReportId:睡眠报告id N
      *             sleepReportType:睡眠报告类型 CONSUME_SLEEP_REPORT-消费级睡眠报告
-     * HOSPITAL_SLEEP_REPORT-医疗级睡眠报告 N
+     *             HOSPITAL_SLEEP_REPORT-医疗级睡眠报告 N
      *             }
-     * @return{
-     * 	"code": "200",
-     * 	"msg": "success",
-     * 	"data": {
-     * 		"totalCount": 1,
-     * 		"data": [
-     *                        {
-     * 				"id": 1,
-     * 				"sleepReportId": 3525,
-     * 				"edfUrl": "https://rlkj-test.oss-cn-shenzhen.aliyuncs.com/2022-12-14-153831-15111468543-Flex-AirDream1-3846.edf",
-     * 				"sleepReportType": "CONSUME_SLEEP_REPORT",
-     * 				"shopDeviceNumber": "Flex-BM05-500012"
-     *            }
-     * 		]
-     * 	}
+     * @return{ "code": "200",
+     * "msg": "success",
+     * "data": {
+     * "totalCount": 1,
+     * "data": [
+     * {
+     * "id": 1,
+     * "sleepReportId": 3525,
+     * "edfUrl": "https://rlkj-test.oss-cn-shenzhen.aliyuncs.com/2022-12-14-153831-15111468543-Flex-AirDream1-3846.edf",
+     * "sleepReportType": "CONSUME_SLEEP_REPORT",
+     * "shopDeviceNumber": "Flex-BM05-500012"
+     * }
+     * ]
+     * }
      * }
      */
     @PostMapping(value = "/api/shop/sleep/findByList")
     Message<Map<String, Object>> getSleepReportList(@RequestHeader("token") String token,
-                                             @RequestBody Map<String, Object> body);
+                                                    @RequestBody Map<String, Object> body);
 
     /**
      * 查询开发者指定设备
@@ -133,7 +131,7 @@ public interface FlexolinkFeignClient {
      */
     @PostMapping(value = "/api/shop/device/del")
     Message<Boolean> delDevice(@RequestHeader("token") String token,
-                                           @RequestBody Map<String, Object> body);
+                               @RequestBody Map<String, Object> body);
 
     /**
      * 获取设备绑定的用户信息
@@ -163,63 +161,105 @@ public interface FlexolinkFeignClient {
      * @param body{ "id":"1" Y,
      *              }
      * @return {
-     * 	"code": "200",
-     * 	"msg": "success",
-     * 	"data":  {
-     * 		"sleepReportType": "CONSUME_SLEEP_REPORT",
-     * 		"shopDeviceNumber": "Flex-BM05-500012",
-     * 		"edfUrl": "https://rlkj-test.oss-cn-shenzhen.aliyuncs.com/2022-12-14-153831-15111468543-Flex-AirDream1-3846.edf",
-     * 		"data": {
-     * 			"sleepQuality": 0,
-     * 			"averageSleepScore": 17,
-     * 			"sleepStage": [
-     * 				4,
-     * 				4
-     * 			],
-     * 			"wakeDuration": 95,
-     * 			"deepSleepDuration": 0,
-     * 			"remDuration": 0,
-     * 			"lightSleepDuration": 0,
-     * 			"totalSleepDuration": 95,
-     * 			"fallAsleepDuration": 95,
-     * 			"fallAsleepTimePoint": "2022-12-14 14:36:44",
-     * 			"brainAge": 15,
-     * 			"sleepNeedFixIndex": 0,
-     * 			"memoryConsolidateIndex": 0,
-     * 			"sleepStableIndex": 83,
-     * 			"brainRecoverIndex": 17,
-     * 			"sleepImmerseCurve": [
-     * 				1,
-     * 				4.394601493707461e-8
-     * 			],
-     * 			"getupTimePoint": "2022-12-14 14:36:19",
-     * 			"wakeTimesInSleep": 0,
-     * 			"bodyMovementTimes": 0,
-     * 			"bodyPosition": [
-     * 				4,
-     * 				4
-     * 			],
-     * 			"sleepImmerseTimes": 1,
-     * 			"sleepImerseTime": [
-     * 				0,
-     * 				4
-     * 			]
-     *                }    * 	}
+     * "code": "200",
+     * "msg": "success",
+     * "data":  {
+     * "sleepReportType": "CONSUME_SLEEP_REPORT",
+     * "shopDeviceNumber": "Flex-BM05-500012",
+     * "edfUrl": "https://rlkj-test.oss-cn-shenzhen.aliyuncs.com/2022-12-14-153831-15111468543-Flex-AirDream1-3846.edf",
+     * "data": {
+     * "sleepQuality": 0,
+     * "averageSleepScore": 17,
+     * "sleepStage": [
+     * 4,
+     * 4
+     * ],
+     * "wakeDuration": 95,
+     * "deepSleepDuration": 0,
+     * "remDuration": 0,
+     * "lightSleepDuration": 0,
+     * "totalSleepDuration": 95,
+     * "fallAsleepDuration": 95,
+     * "fallAsleepTimePoint": "2022-12-14 14:36:44",
+     * "brainAge": 15,
+     * "sleepNeedFixIndex": 0,
+     * "memoryConsolidateIndex": 0,
+     * "sleepStableIndex": 83,
+     * "brainRecoverIndex": 17,
+     * "sleepImmerseCurve": [
+     * 1,
+     * 4.394601493707461e-8
+     * ],
+     * "getupTimePoint": "2022-12-14 14:36:19",
+     * "wakeTimesInSleep": 0,
+     * "bodyMovementTimes": 0,
+     * "bodyPosition": [
+     * 4,
+     * 4
+     * ],
+     * "sleepImmerseTimes": 1,
+     * "sleepImerseTime": [
+     * 0,
+     * 4
+     * ]
+     * }    * 	}
      * }
      */
     @PostMapping(value = "/api/shop/sleep/getPlatformSleepReport")
     Message<Map<String, Object>> getPlatformSleepReport(@RequestHeader("token") String token,
-                                               @RequestBody Map<String, Object> body);
+                                                        @RequestBody Map<String, Object> body);
+
     /**
      * 生成端睡眠报告
      *
      * @param token
-     * @param body{ "id":"1" Y,
-     *              }
      * @return
      */
     @PostMapping(value = "/api/shop/sleep/generateSleepReport")
     Message<Map<String, Object>> generateSleepReport(@RequestHeader("token") String token,
-                                               @RequestBody Map<String, Object> body);
+                                                     @RequestBody Map<String, Object> body);
+
+    /**
+     * 推送数据
+     *
+     * @param token
+     * @return
+     */
+    @PostMapping(value = "/api/deviceData/push")
+    Object pushData(@RequestHeader("token") String token,
+                    @RequestBody Map<String, Object> body);
+
+    /**
+     * 生成注意力报告
+     * @return
+     */
+    @PostMapping(value = "/api/rlAttentionReport/add")
+    Message<Map<String, Object>> addAttentionReport(@RequestHeader("token") String token,
+                                                    @RequestBody Map<String, Object> body);
+    /**
+     * 获取注意力报告
+     */
+    @PostMapping(value = "/api/rlAttentionReport/get")
+    Message<Map<String, Object>> getAttentionReport(@RequestHeader("token") String token,
+                                                    @RequestBody Map<String, Object> body);
+    /**
+     * 生成冥想报告
+     */
+    @PostMapping(value = "/api/rlMeditationReport/add")
+    Message<Map<String, Object>> addMeditationReport(@RequestHeader("token") String token,
+                                                     @RequestBody Map<String, Object> body);
+    /**
+     * 获取冥想报告详情
+     */
+    @PostMapping(value = "/api/rlMeditationReport/get")
+    Message<Map<String, Object>> getMeditationReport(@RequestHeader("token") String token,
+                                                     @RequestBody Map<String, Object> body);
+
+    /**
+     * 获取冥想报告列表
+     */
+    @PostMapping(value = "/api/rlMeditationReport/getMeditationReportList")
+    Message<Map<String, Object>> getMeditationReportList(@RequestHeader("token") String token,
+                                                         @RequestBody Map<String, Object> body);
 
 }
